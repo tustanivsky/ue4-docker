@@ -62,7 +62,7 @@ if ($visual_studio_build -eq "15")
 }
 else
 {
-    $windows_sdk_version = 20348
+    $windows_sdk_version = 22621
 }
 
 # NOTE: We use the Visual Studio 2022 installer even for Visual Studio 2019 and 2017 here because the old (2017) installer now breaks
@@ -84,9 +84,11 @@ $vs_args = @(
     "--locale", "en-US",
     "--add", "Microsoft.VisualStudio.Workload.VCTools",
     "--add", "Microsoft.VisualStudio.Workload.MSBuildTools",
+    "--add", "Microsoft.VisualStudio.Component.VC.14.38.17.8.x86.x64",
+    "--add", "Microsoft.VisualStudio.Component.VC.14.44.17.14.x86.x64",
+    "--add", "Microsoft.VisualStudio.Component.Windows10SDK.19041",
+    "--add", "Microsoft.VisualStudio.Component.Windows11SDK.22621",
     "--add", "Microsoft.VisualStudio.Component.NuGet",
-    "--add", "Microsoft.VisualStudio.Component.VC.Tools.x86.x64",
-    "--add", "Microsoft.VisualStudio.Component.Windows10SDK.$windows_sdk_version",
     "--add", "Microsoft.Net.Component.4.5.TargetingPack",
     "--add", "Microsoft.Net.Component.4.6.2.TargetingPack",
     "--add", "Microsoft.Net.ComponentGroup.DevelopmentPrerequisites",
