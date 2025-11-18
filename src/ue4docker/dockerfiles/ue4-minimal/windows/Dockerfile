@@ -21,6 +21,7 @@ RUN .\Engine\Build\BatchFiles\RunUAT.bat BuildGraph `
 	-set:WithDDC={% if excluded_components.ddc == true %}false{% else %}true{% endif %} `
 	-set:WithServer=true `
 	{{ buildgraph_args }} && `
+	powershell -Command "Get-Process -Name 'VBCSCompiler','MSBuild','dotnet' -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue; Start-Sleep -Seconds 10" && `
 	(if exist C:\UnrealEngine\LocalBuilds\InstalledDDC rmdir /s /q C:\UnrealEngine\LocalBuilds\InstalledDDC) && `
 	rmdir /s /q C:\UnrealEngine\Engine
 
